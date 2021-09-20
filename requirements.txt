@@ -1,0 +1,3 @@
+python-telegram-bot
+requests-html
+selenium==4.0.0a1
