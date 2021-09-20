@@ -1,23 +1,12 @@
 from typing import Text
-import telegram
 from selenium import webdriver
 from selenium.webdriver import ActionChains
 from os import path
 from requests_html import HTMLSession
-from telegram import bot
 import time
 import math
 
-class TelegramBot:
-	# 클래스 생성자
-	def __init__(self, token, chatID):
-		self.bot = telegram.Bot(token=token)
-		self.chatID = chatID
-		self.updates = self.bot.getUpdates()
-	# 메시지 전송 함수
-	def SendTelegramMessage(self, _description):
-		self.bot.sendMessage(chat_id=self.chatID, text=_description)
-
+import telegram_module as MessageModule
 
 class Kimp:
     # 클래스 생성자
@@ -30,12 +19,13 @@ class Kimp:
     # 김프 퍼센티지 계산 함수
     def CalcPremiumPercentage(self, krwPrice, usdPrice, tetherPrice):
         return round(((krwPrice/(usdPrice*tetherPrice))*100)-100, 2)
+    # 가격 긁어오는 함수
 
 
 # 메인 함수
 def main():
     # initialize class
-    bot = TelegramBot(
+    bot = MessageModule.TelegramBot(
     	'2039263005:AAF_KVYVpcBHvBEbRPvlwtsj_njNRtpEE0E', 305295334)
     collection = Kimp()
 
