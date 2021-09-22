@@ -40,10 +40,11 @@ class TelegramBot:
 		pass
     # CommandHandler 생성 함수
 	def HandlerInitialize(self):
+		# Handler 정의 (텔레그램 /"명령어" 인삭)
 		self.startHandler = CommandHandler('start', self.StartBot)
 		self.stopHandler = CommandHandler('stop', self.StopBot)
 		self.getXRPPremiumHandler = CommandHandler('xrp', self.GetXRPPremium)
-
+		# Handler 추가
 		self.dispatcher.add_handler(self.startHandler)
 		self.dispatcher.add_handler(self.stopHandler)
 		self.dispatcher.add_handler(self.getXRPPremiumHandler)
