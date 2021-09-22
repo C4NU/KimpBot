@@ -1,3 +1,4 @@
+import collections
 import telegram
 from telegram.ext import Updater, dispatcher
 from telegram.ext import CommandHandler
@@ -11,6 +12,7 @@ class TelegramBot:
 		self.chatID = _chatID
 		self.updater = Updater(token=_token, use_context=True)
 		self.dispatcher = self.updater.dispatcher
+		self.collection = PremiumModule.Kimp()
     # 메시지 전송 함수
 	def SendTelegramMessage(self, _description):
 		self.bot.sendMessage(chat_id=self.chatID, text=_description)
@@ -21,8 +23,9 @@ class TelegramBot:
 	def StopBot(self, update, context):
 		self.SendTelegramMessage("봇 작동 종료.")
 	# 리플 김프 구해오는 함수
-	def GetXRPPremium(self):
-		pass
+	def GetXRPPremium(self, update, context):
+		result = self.collection.CalcPremiumPercentage('XRP')
+		self.SendTelegramMessage("리플의 현재 김프: "+str(result))
 	# 스텔라 김프 구해오는 함수
 	def GetXLMPremium(self):
 		pass
@@ -39,8 +42,11 @@ class TelegramBot:
 	def HandlerInitialize(self):
 		self.startHandler = CommandHandler('start', self.StartBot)
 		self.stopHandler = CommandHandler('stop', self.StopBot)
+		self.getXRPPremiumHandler = CommandHandler('xrp', self.GetXRPPremium)
+
 		self.dispatcher.add_handler(self.startHandler)
 		self.dispatcher.add_handler(self.stopHandler)
+		self.dispatcher.add_handler(self.getXRPPremiumHandler)
 
 # 클래스 테스트 용 메인 함수
 def main():
