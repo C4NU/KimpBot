@@ -13,8 +13,8 @@ class Kimp:
         self.trx = {'NAME': 'TRX', 'PRICE': 0, 'KIMP': 0}  # 트론 딕셔너리 변수
         self.dot = {'NAME': 'DOT', 'PRICE': 0, 'KIMP': 0}  # 폴카닷 딕셔너리 변수
     # 김프 퍼센티지 계산 함수
-    def CalcPremiumPercentage(self, krwPrice, usdPrice, tetherPrice):
-        return round(((krwPrice/(usdPrice*tetherPrice))*100)-100, 2)
+    def CalcPremiumPercentage(self, name):
+        return round(((self.GetUpbitPrice(name)/(self.GetBinancePrice(name)*1184.44))*100)-100, 2) # 1184.44는 테더 가격 (임시)
     # 업비트 가격 긁어오는 함수, name 인자값에 xrp, xlm, eos, trx, dot
     def GetUpbitPrice(self, name):
         return pyupbit.get_current_price("KRW-"+name) # type: float
