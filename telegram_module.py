@@ -25,29 +25,56 @@ class TelegramBot:
 	# 리플 김프 구해오는 함수
 	def GetXRPPremium(self, update, context):
 		result = self.collection.CalcPremiumPercentage('XRP')
-		self.SendTelegramMessage("리플의 현재 김프: "+str(result))
+		self.SendTelegramMessage("리플의 현재 김프: "+str(result)+"%\n"
+		+"리플 원화: "+str(self.collection.GetUpbitPrice("XRP"))+"\n"
+		+"리플 달러: "+str(self.collection.GetBinancePrice("XRP"))+"\n"
+		+"USD/KRW 환율: "+str(self.collection.GetUSDPrice()))
 	# 스텔라 김프 구해오는 함수
-	def GetXLMPremium(self):
-		pass
+	def GetXLMPremium(self, update, context):
+		result = self.collection.CalcPremiumPercentage('XLM')
+		self.SendTelegramMessage("스텔라의 현재 김프: "+str(result)+"%\n"
+		+"스텔라 원화: "+str(self.collection.GetUpbitPrice("XLM"))+"\n"
+		+"스텔라 달러: "+str(self.collection.GetBinancePrice("XLM"))+"\n"
+		+"USD/KRW 환율: "+str(self.collection.GetUSDPrice()))
 	# 이오스 김프 구해오는 함수
-	def GetEOSPremium(self):
-		pass
+	def GetEOSPremium(self, update, context):
+		result = self.collection.CalcPremiumPercentage('EOS')
+		self.SendTelegramMessage("이오스의 현재 김프: "+str(result)+"%\n"
+		+"이오스 원화: "+str(self.collection.GetUpbitPrice("EOS"))+"\n"
+		+"이오스 달러: "+str(self.collection.GetBinancePrice("EOS"))+"\n"
+		+"USD/KRW 환율: "+str(self.collection.GetUSDPrice()))
 	# 트론 김프 구해오는 함수
-	def GetTRXPremium(self):
-		pass
+	def GetTRXPremium(self, update, context):
+		result = self.collection.CalcPremiumPercentage('TRX')
+		self.SendTelegramMessage("트론의 현재 김프: "+str(result)+"%\n"
+		+"트론 원화: "+str(self.collection.GetUpbitPrice("TRX"))+"\n"
+		+"트론 달러: "+str(self.collection.GetBinancePrice("TRX"))+"\n"
+		+"USD/KRW 환율: "+str(self.collection.GetUSDPrice()))
 	# 폴카닷 김프 구해오는 함수
-	def GetDOTPremium(self):
-		pass
+	def GetDOTPremium(self, update, context):
+		result = self.collection.CalcPremiumPercentage('DOT')
+		self.SendTelegramMessage("폴카닷의 현재 김프: "+str(result)+"%\n"
+		+"폴카닷 원화: "+str(self.collection.GetUpbitPrice("DOT"))+"\n"
+		+"폴카닷 달러: "+str(self.collection.GetBinancePrice("DOT"))+"\n"
+		+"USD/KRW 환율: "+str(self.collection.GetUSDPrice()))
     # CommandHandler 생성 함수
 	def HandlerInitialize(self):
 		# Handler 정의 (텔레그램 /"명령어" 인삭)
 		self.startHandler = CommandHandler('start', self.StartBot)
 		self.stopHandler = CommandHandler('stop', self.StopBot)
 		self.getXRPPremiumHandler = CommandHandler('xrp', self.GetXRPPremium)
+		self.getXLMPremiumHandler = CommandHandler('xlm', self.GetXLMPremium)
+		self.getEOSPremiumHandler = CommandHandler('eos', self.GetEOSPremium)
+		self.getTRXPremiumHandler = CommandHandler('trx', self.GetTRXPremium)
+		self.getDOTPremiumHandler = CommandHandler('dot', self.GetDOTPremium)
 		# Handler 추가
 		self.dispatcher.add_handler(self.startHandler)
 		self.dispatcher.add_handler(self.stopHandler)
 		self.dispatcher.add_handler(self.getXRPPremiumHandler)
+		self.dispatcher.add_handler(self.getXLMPremiumHandler)
+		self.dispatcher.add_handler(self.getEOSPremiumHandler)
+		self.dispatcher.add_handler(self.getTRXPremiumHandler)
+		self.dispatcher.add_handler(self.getDOTPremiumHandler)
 
 # 클래스 테스트 용 메인 함수
 def main():
