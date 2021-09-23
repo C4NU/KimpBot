@@ -19,6 +19,7 @@ class Kimp:
     # 바이낸스 가격 긁어오는 함수, name 인자값에 xrp / xlm / eos / trx / dot
     def GetBinancePrice(self, name):
         return float(self.client.get_ticker(symbol=name+'USDT')['lastPrice']) # type: float
+    # 야후 파이낸스에서 USD/KRW 받아오는 함수, pandas series 값.
     def GetUSDPrice(self):
         result = yfi.download(['USDKRW=X'],start=datetime.today(), end=datetime.today())['Close'][0]
         #result = pyupbit.get_current_price("KRW-BTC") / pyupbit.get_current_price("USDT-BTC") 업비트의 테더 가격..
