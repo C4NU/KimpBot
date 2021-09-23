@@ -3,3 +3,4 @@ requests-html
 selenium==4.0.0a1
 pyupbit
 python-binance
+yfinance
