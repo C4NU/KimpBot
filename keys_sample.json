@@ -1,0 +1,10 @@
+{
+	"binance": {
+		"api_key": "바이낸스에서 발급 받은 api key",
+		"api_secret": "바이낸스에서 발급 받은 api secret key"
+	},
+	"telegram": {
+		"token": "텔레그램 봇 토큰",
+		"chatID": "텔레그램 개인 chatID"
+	}
+}

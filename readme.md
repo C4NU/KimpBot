@@ -1,6 +1,18 @@
-# 김프 텔레그램 알람 봇
+# Kimchi Premium Telegram Bot
+
 ## Description
-Kimp.ga 사이트의 전송용 코인 5개 (XRP, EOS, TRON, XLM, DOT) 의 김프 가격을 요청시 받아와 가져오는 텔레그램 봇
+Get 5 coins' (XRP, XLM, TRX, EOS, DOT) kimchi premium, and send to Telegram Bot message.
+
+## Requirements
+
+1. Python 3.9
+2. Upbit API
+   1. Get Upbit API  from UPBIT OPEN API
+3. Binance API
+4. Telegram Bot
+   1. BotFather
+5. PythonAnywhere
+
 ## Install
 
 ### Install requirements.txt

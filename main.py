@@ -1,10 +1,15 @@
-import telegram_module as MessageModule
+import json
+
+import telegram # 텔레그램 키 읽어올 json 패키지
+import telegram_module as MessageModule # 텔레그렘 봇 모듈
 
 # 메인 함수
 def main():
+    with open("keys.json") as f:
+            data = json.load(f)
     # initialize bot class
     bot = MessageModule.TelegramBot(
-    	'2039263005:AAF_KVYVpcBHvBEbRPvlwtsj_njNRtpEE0E', 305295334)
+    	data["telegram"]["token"], data["telegram"]["chatID"])
     # initialize bot functions
     bot.HandlerInitialize()
     # bot start updates
