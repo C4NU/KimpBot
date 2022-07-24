@@ -57,6 +57,12 @@ class TelegramBot:
 		+"폴카닷 원화: "+str(self.collection.GetUpbitPrice("DOT"))+"\n"
 		+"폴카닷 달러: "+str(self.collection.GetBinancePrice("DOT"))+"\n"
 		+"USD/KRW 환율: "+str(self.collection.GetUSDPrice()))
+	def GetALGOPremium(self, update, context):
+		result = self.collection.CalcPremiumPercentage('ALGO')
+		self.SendTelegramMessage("알고랜드의 현재 김프: "+str(result)+"%\n"
+		+"알고랜드 원화: "+str(self.collection.GetUpbitPrice("ALGO"))+"\n"
+		+"알고랜드 달러: "+str(self.collection.GetBinancePrice("ALGO"))+"\n"
+		+"USD/KRW 환율: "+str(self.collection.GetUSDPrice()))
     # CommandHandler 생성 함수
 	def HandlerInitialize(self):
 		# Handler 정의 (텔레그램 /"명령어" 인삭)
@@ -67,6 +73,7 @@ class TelegramBot:
 		self.getEOSPremiumHandler = CommandHandler('eos', self.GetEOSPremium)
 		self.getTRXPremiumHandler = CommandHandler('trx', self.GetTRXPremium)
 		self.getDOTPremiumHandler = CommandHandler('dot', self.GetDOTPremium)
+		self.getALGOPremiumHandler = CommandHandler('algo', self.GetALGOPremium)
 		# Handler 추가
 		self.dispatcher.add_handler(self.startHandler)
 		self.dispatcher.add_handler(self.stopHandler)
@@ -75,14 +82,7 @@ class TelegramBot:
 		self.dispatcher.add_handler(self.getEOSPremiumHandler)
 		self.dispatcher.add_handler(self.getTRXPremiumHandler)
 		self.dispatcher.add_handler(self.getDOTPremiumHandler)
+		self.dispatcher.add_handler(self.getALGOPremiumHandler)
 
-# 클래스 테스트 용 메인 함수
-def main():
-	Bot=TelegramBot('2039263005:AAF_KVYVpcBHvBEbRPvlwtsj_njNRtpEE0E',305295334)
-	Bot.HandlerInitialize()
-
-	Bot.updater.start_polling()
-	Bot.updater.idle()
-    
 if __name__ == '__main__':
 	main()
