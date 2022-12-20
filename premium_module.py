@@ -25,8 +25,7 @@ class Kimp:
         return float(self.client.get_ticker(symbol=name+'USDT')['lastPrice']) # type: float
     # 야후 파이낸스에서 USD/KRW 받아오는 함수, pandas series 값.
     def GetUSDPrice(self):
-        result = yfi.download(['KRW=X'],start=datetime.today().strftime("%Y-%m-%d"),
-         end=datetime.today().strftime("%Y-%m-%d"))['Close'][0]
+        result = yfi.download(['KRW=X'],start=datetime.today().strftime("%Y-%m-%d"),end=datetime.today().strftime("%Y-%m-%d"))['Close'][0]
         #result = pyupbit.get_current_price("KRW-BTC") / pyupbit.get_current_price("USDT-BTC") 업비트의 테더 가격..
         return round(result,2)
 
