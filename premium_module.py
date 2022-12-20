@@ -9,8 +9,8 @@ from binance import Client # 바이낸스 API python wrapper 패키지
 class Kimp:
     # 클래스 생성자
     def __init__(self):
-        #with open("keys.json") as f:
-        with open("keys_sample.json") as f:
+        with open("keys.json") as f:
+        #with open("keys_sample.json") as f:
             self.data = json.load(f)
         self.client = Client(self.data["binance"]["api_key"],
         self.data["binance"]["api_secret"]) # 바이낸스 client 변수
@@ -32,10 +32,10 @@ class Kimp:
 # 프리미엄 모듈 테스트용 메인 함수
 def main():
     premium = Kimp()
-    #print(datetime.today().strftime("%Y-%m-%d"))
-    print(premium.GetUSDPrice())
-    print(premium.GetUpbitPrice("XRP"))
-    print(premium.GetBinancePrice("XRP"))
+    print(datetime.today().strftime("%Y-%m-%d"))
+    #print(premium.GetUSDPrice())
+    #print(premium.GetUpbitPrice("XRP"))
+    #print(premium.GetBinancePrice("XRP"))
 
 # 메인 함수 구역
 if __name__ == '__main__':
