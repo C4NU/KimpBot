@@ -32,8 +32,8 @@ class Kimp:
 # 프리미엄 모듈 테스트용 메인 함수
 def main():
     premium = Kimp()
-    print(datetime.today().strftime("%Y-%m-%d"))
-    #print(premium.GetUSDPrice())
+    #print(datetime.today().strftime("%Y-%m-%d"))
+    print(premium.GetUSDPrice())
     #print(premium.GetUpbitPrice("XRP"))
     #print(premium.GetBinancePrice("XRP"))
 
