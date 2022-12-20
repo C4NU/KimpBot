@@ -84,5 +84,8 @@ class TelegramBot:
 		self.dispatcher.add_handler(self.getDOTPremiumHandler)
 		self.dispatcher.add_handler(self.getALGOPremiumHandler)
 
+def main():
+	print("Telegram Module Test")
+	
 if __name__ == '__main__':
 	main()
