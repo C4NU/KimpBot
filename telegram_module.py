@@ -1,5 +1,5 @@
 import collections
-from tkinter.font import BOLD
+
 import telegram
 from telegram.ext import Updater, dispatcher
 from telegram.ext import CommandHandler
