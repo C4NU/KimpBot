@@ -1,4 +1,5 @@
 import collections
+from tkinter.font import BOLD
 import telegram
 from telegram.ext import Updater, dispatcher
 from telegram.ext import CommandHandler
@@ -15,7 +16,7 @@ class TelegramBot:
 		self.collection = PremiumModule.Kimp()
     # 메시지 전송 함수
 	def SendTelegramMessage(self, _description):
-		self.bot.sendMessage(chat_id=self.chatID, text=_description)
+		self.bot.sendMessage(chat_id=self.chatID, text=_description, parse_mode = "markdown")
 	# 봇 시작 함수
 	def StartBot(self, update, context):
 		self.SendTelegramMessage("봇 작동 시작.")
