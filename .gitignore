@@ -129,4 +129,5 @@ dmypy.json
 .pyre/
 
 # Private key data
+keys.json.venv
 keys.json

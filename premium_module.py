@@ -16,7 +16,7 @@ class Kimp:
         self.data["binance"]["api_secret"]) # 바이낸스 client 변수
     # 김프 퍼센티지 계산 함수
     def CalcPremiumPercentage(self, name):
-        return round(((self.GetUpbitPrice(name)/(self.GetBinancePrice(name)*self.GetUSDPrice()))*100)-100, 2) # 1184.44는 테더 가격 (임시)
+        return round(((self.GetUpbitPrice(name)/(self.GetBinancePrice(name)*self.GetUSDPrice()))*100)-100, 2)
     # 업비트 가격 긁어오는 함수, name 인자값에 xrp, xlm, eos, trx, dot
     def GetUpbitPrice(self, name):
         return pyupbit.get_current_price("KRW-"+name) # type: float
@@ -28,6 +28,8 @@ class Kimp:
         result = yfi.download(['KRW=X'], period="1d")['Close'][0]
         #result = pyupbit.get_current_price("KRW-BTC") / pyupbit.get_current_price("USDT-BTC") 업비트의 테더 가격..
         return round(result,2)
+    def GetBestPrice(self):
+        pass
 
 # 프리미엄 모듈 테스트용 메인 함수
 def main():
